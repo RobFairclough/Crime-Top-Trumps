@@ -16,11 +16,10 @@ class App extends Component {
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(position => {
         console.log(position);
-        const { latitude, longitude } = position.coords;
-        const location = { latitude, longitude };
         const { month, year } = this.state;
-        this.setState({ location });
+        const { latitude, longitude } = position.coords;
         const url = `https://data.police.uk/api/crimes-street/all-crime?lat=${latitude}&lng=${longitude}&date=${year}-${month}`;
+        this.setState({ latitude, longitude, url });
         axios
           .get(url)
           .then(({ data }) => {
@@ -35,7 +34,7 @@ class App extends Component {
       });
     else {
       console.log('else');
-      const { latitude, longitude } = this.state.location;
+      const { latitude, longitude } = this.state;
       const url = `https://data.police.uk/api/crimes-street/all-crime?lat=${latitude}&lng=${longitude}&date=2018-01`;
       axios
         .get(url)
