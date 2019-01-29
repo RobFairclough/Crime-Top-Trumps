@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { Doughnut } from 'react-chartjs-2';
 import DateChooser from './components/DateChooser';
+import PlayerSelect from './components/PlayerSelect';
 import Chungus from './components/Chungus';
 // import dateFormat from 'dateformat';
 class App extends Component {
@@ -111,14 +112,20 @@ class App extends Component {
     return (
       <div className="App">
         <h1>{tally ? 'Crime in your area (or blackpool)' : 'Loading...'}</h1>
-        <DateChooser
+        {/* <DateChooser
           setMonth={this.setMonth}
           month={month}
           year={year}
           setYear={this.setYear}
         />
-        {tally && <Doughnut data={data} />}
-        <Chungus hidden={tally ? 'true' : 'false'} />
+        {tally && <Doughnut data={data} />} */}
+        {/* <Chungus hidden={tally ? 'true' : 'false'} /> */}
+        <div id="players">
+          <label>Player 1: </label>
+          <PlayerSelect player="1" />
+          <label>Player 2: </label>
+          <PlayerSelect player="2" />
+        </div>
       </div>
     );
   }
