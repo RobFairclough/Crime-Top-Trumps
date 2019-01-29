@@ -1,5 +1,5 @@
 import React from 'react';
-const DateChooser = ({ setMonth, setYear }) => {
+const DateChooser = props => {
   const months = [
     '01',
     '02',
@@ -15,17 +15,21 @@ const DateChooser = ({ setMonth, setYear }) => {
     '12'
   ];
   const years = [];
-  for (let i = 1970; i < 2019; i++) {
+  for (let i = 2016; i < 2019; i++) {
     years.push(i);
   }
   const changeDateReq = ({ target: { value } }) => {
-    if (value.length === 2) setMonth(value);
-    else setYear(value);
+    if (value.length === 2) props.setMonth(value);
+    else props.setYear(value);
   };
   return (
     <>
       <label>Select Month</label>
-      <select onChange={changeDateReq} id="month-list">
+      <select
+        onChange={changeDateReq}
+        id="month-list"
+        defaultValue={props.month}
+      >
         {months.map(month => (
           <option value={month} key={month}>
             {month}
@@ -33,7 +37,7 @@ const DateChooser = ({ setMonth, setYear }) => {
         ))}
       </select>
       <label>Select Year</label>
-      <select onChange={changeDateReq} id="year-list">
+      <select onChange={changeDateReq} defaultValue={props.year} id="year-list">
         {years.map(year => (
           <option value={year} key={year}>
             {year}

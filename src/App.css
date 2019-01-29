@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
 }
 
 .App-logo {
@@ -21,12 +26,26 @@
 .App-link {
   color: #61dafb;
 }
-
+.chung {
+  animation-name: App-logo-spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  transition: 1s;
+  position: absolute;
+  top: 25%;
+  pointer-events: none;
+}
+.hidden {
+  opacity: 0;
+  transition: 1s;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
+    transform: perspective(0deg);
   }
   to {
     transform: rotate(360deg);
+    transform: perspective(90deg);
   }
 }
