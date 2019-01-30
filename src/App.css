@@ -52,7 +52,7 @@ ul > li {
 }
 
 .player-1-text {
-  color: blue;
+  color: rgb(0, 153, 255);
   font-family: 'Montserrat', serif;
 }
 
@@ -76,4 +76,17 @@ ul > li {
   border-bottom: 5px solid transparent;
   border-right: 5px solid transparent;
   border-left: 5px solid red;
+}
+
+.chung {
+  animation: chung 4s infinite;
+}
+
+@keyframes chung {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

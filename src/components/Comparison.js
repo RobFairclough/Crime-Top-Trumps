@@ -1,6 +1,12 @@
 import React from 'react';
+import Chungus from './Chungus';
 
-const Comparison = ({ player1Score, player2Score }) => {
+const Comparison = ({
+  player1Score,
+  player2Score,
+  player1Neighbourhood,
+  player2Neighbourhood
+}) => {
   console.log(player1Score, player2Score);
   const categories = [
     ...Object.keys(player1Score),
@@ -42,20 +48,28 @@ const Comparison = ({ player1Score, player2Score }) => {
     0
   );
   const winner =
-    p1Total > p2Total ? 'player-2' : p1Total < p2Total ? 'player-1' : '';
+    p1Total > p2Total
+      ? player2Neighbourhood.name
+      : p1Total < p2Total
+      ? player1Neighbourhood.name
+      : 'Chungus';
 
   return (
     <div>
       <h2 className={`${winner}-text`}>WINNER: {winner}</h2>
       <ul id="compare-list">
-        {wins.map(win => (
-          <>
-            <div className={`${win.winner}-arrow`} />
-            <li className={`${win.winner}-text`}>
-              {win.category}: {win.winner}
-            </li>
-          </>
-        ))}
+        {winner === 'Chungus' ? (
+          <Chungus />
+        ) : (
+          wins.map(win => (
+            <>
+              <div className={`${win.winner}-arrow`} />
+              <li className={`${win.winner}-text`}>
+                {win.category}: {win.winner}
+              </li>
+            </>
+          ))
+        )}
       </ul>
     </div>
   );

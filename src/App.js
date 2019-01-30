@@ -81,7 +81,7 @@ class App extends Component {
         )
         .then(({ data }) => {
           const { centre: location } = data;
-          this.setState({ player1Location: location });
+          this.setState({ player1Location: location, player1Score: '' });
         });
     }
     if (player2Neighbourhood.id !== prevState.player2Neighbourhood.id) {
@@ -93,7 +93,7 @@ class App extends Component {
         )
         .then(({ data }) => {
           const { centre: location } = data;
-          this.setState({ player2Location: location });
+          this.setState({ player2Location: location, player2Score: '' });
         });
     }
     if (player1Location !== prevState.player1Location) {
@@ -133,11 +133,11 @@ class App extends Component {
   }
 
   setMonth = newMonth => {
-    this.setState({ month: newMonth, tally: '' });
+    this.setState({ month: newMonth, player1Score: '', player2Score: '' });
   };
 
   setYear = newYear => {
-    this.setState({ year: newYear, tally: '' });
+    this.setState({ year: newYear, player1Score: '', player2Score: '' });
   };
 
   setPlayerForce = (player, force) => {
@@ -156,6 +156,8 @@ class App extends Component {
       forces,
       player1Neighbourhoods,
       player2Neighbourhoods,
+      player1Neighbourhood,
+      player2Neighbourhood,
       player1Score,
       player2Score
     } = this.state;
@@ -186,6 +188,8 @@ class App extends Component {
             <Comparison
               player1Score={player1Score}
               player2Score={player2Score}
+              player1Neighbourhood={player1Neighbourhood}
+              player2Neighbourhood={player2Neighbourhood}
             />
           )}
           <div id="player2">
