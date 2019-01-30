@@ -6,47 +6,53 @@
   align-items: center;
   justify-items: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 5s linear;
-  height: 40vmin;
+h1 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#players {
+  display: grid;
+  grid-template-columns: 3fr 2fr 3fr;
+  grid-gap: 5px;
+  justify-content: stretch;
+}
+#player1 {
+  grid-column: 1;
+  overflow: hidden;
+}
+#player2 {
+  grid-column: 3;
+  overflow: hidden;
+}
+
+#compare-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  list-style-type: none;
 }
 
-.App-link {
-  color: #61dafb;
+.player-1-text {
+  color: blue;
 }
 
-.chung {
-  animation-name: App-logo-spin;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  transition: 1s;
-  position: absolute;
-  top: 25%;
-  pointer-events: none;
+.player-2-text {
+  color: red;
 }
-.hidden {
-  opacity: 0;
-  transition: 1s;
+
+.player-1-arrow {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-right: 5px solid blue;
 }
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-    transform: perspective(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-    transform: perspective(90deg);
-  }
+.player-2-arrow {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-left: 5px solid red;
 }

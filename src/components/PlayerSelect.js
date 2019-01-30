@@ -1,30 +1,45 @@
-import axios from 'axios';
-import React, { Component } from 'react';
+import React from 'react';
 
-class PlayerSelect extends Component {
-  state = {
-    forces: ''
+const PlayerSelect = props => {
+  const {
+    forces,
+    player,
+    setPlayerForce,
+    setPlayerNeighbourhood,
+    neighbourhoods
+  } = props;
+
+  const handlePlayerChoice = e => {
+    const force = forces.filter(force => force.name === e.target.value)[0];
+    console.log(force);
+    setPlayerForce(player, force);
   };
-  componentDidMount() {
-    axios
-      .get('https://data.police.uk/api/forces')
-      .then(({ data }) => {
-        this.setState({ forces: [...data] });
-      })
-      .catch(console.log);
-  }
-  render() {
-    const { forces } = this.state;
-    return (
-      <select>
+
+  const handlePlayerNeighbourhood = e => {
+    console.log(e.target.value);
+    const neighbourhood = neighbourhoods.filter(
+      hood => hood.name === e.target.value
+    )[0];
+    setPlayerNeighbourhood(player, neighbourhood);
+  };
+  return (
+    <>
+      <select onChange={handlePlayerChoice}>
         {forces ? (
-          forces.map(force => <option>{force.name}</option>)
+          forces.map(force => <option key={force.id}>{force.name}</option>)
         ) : (
           <option>Loading...</option>
         )}
       </select>
-    );
-  }
-}
+      {neighbourhoods && (
+        <select onChange={handlePlayerNeighbourhood}>
+          {neighbourhoods.map(neighbourhood => (
+            <option key={neighbourhood.id}>{neighbourhood.name}</option>
+          ))}
+        </select>
+      )}
+    </>
+  );
+};
 
 export default PlayerSelect;
