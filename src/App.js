@@ -7,8 +7,6 @@ import Scorecard from './components/Scorecard';
 import Comparison from './components/Comparison';
 class App extends Component {
   state = {
-    latitude: '53.806648',
-    longitude: '-3.049300',
     month: '12',
     year: '2018',
     forces: '',
@@ -25,7 +23,6 @@ class App extends Component {
   };
 
   componentDidMount() {
-    console.log('mount');
     axios
       .get('https://data.police.uk/api/forces')
       .then(({ data }) => {
@@ -35,7 +32,6 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('update');
     const {
       month,
       year,
@@ -47,7 +43,6 @@ class App extends Component {
       player2Location
     } = this.state;
     if (player1Force.id !== prevState.player1Force.id) {
-      console.log('sending player 1 request');
       axios
         .get(`https://data.police.uk/api/${player1Force.id}/neighbourhoods`)
         .then(({ data }) =>
@@ -60,7 +55,6 @@ class App extends Component {
         );
     }
     if (player2Force.id !== prevState.player2Force.id) {
-      console.log('sending player 2 request');
       axios
         .get(`https://data.police.uk/api/${player2Force.id}/neighbourhoods`)
         .then(({ data }) =>
@@ -150,7 +144,6 @@ class App extends Component {
 
   render() {
     const {
-      tally,
       month,
       year,
       forces,
