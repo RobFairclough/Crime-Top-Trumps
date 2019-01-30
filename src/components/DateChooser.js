@@ -23,8 +23,8 @@ const DateChooser = props => {
     else props.setYear(value);
   };
   return (
-    <>
-      <label>Select Month</label>
+    <div>
+      <label>Month</label>
       <select
         onChange={changeDateReq}
         id="month-list"
@@ -36,7 +36,7 @@ const DateChooser = props => {
           </option>
         ))}
       </select>
-      <label>Select Year</label>
+      <label>Year</label>
       <select onChange={changeDateReq} defaultValue={props.year} id="year-list">
         {years.map(year => (
           <option value={year} key={year}>
@@ -44,7 +44,7 @@ const DateChooser = props => {
           </option>
         ))}
       </select>
-    </>
+    </div>
   );
 };
 export default DateChooser;

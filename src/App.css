@@ -1,16 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display|Roboto|Montserrat|Noto-Serif-SC');
+* {
+  margin-left: 0;
+  padding: 0;
+}
 .App {
   text-align: center;
   color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
+  font-family: 'Roboto', sans-serif;
+  width: 100vw;
 }
 h1 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 #players {
+  align-self: center;
   display: grid;
   grid-template-columns: 3fr 2fr 3fr;
   grid-gap: 5px;
@@ -24,8 +35,16 @@ h1 {
   grid-column: 3;
   overflow: hidden;
 }
-
+ul {
+  list-style-type: none;
+  font-family: 'Major Mono Display', monospace;
+}
+ul > li {
+  margin-bottom: 1px;
+}
 #compare-list {
+  background: url('https://img.freepik.com/free-photo/black-background_23-2147654000.jpg?size=626&ext=jpg');
+  border: 2px solid white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,10 +53,12 @@ h1 {
 
 .player-1-text {
   color: blue;
+  font-family: 'Montserrat', serif;
 }
 
 .player-2-text {
   color: red;
+  font-family: 'Noto Serif SC', sans-serif;
 }
 
 .player-1-arrow {

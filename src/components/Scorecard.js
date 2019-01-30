@@ -6,7 +6,7 @@ const Scorecard = ({ player, score }) => {
     labels: Object.keys(score),
     datasets: [
       {
-        label: `player ${player}'s crime chart`,
+        label: `number of crimes`,
         backgroundColor: 'white',
         hoverBackgroundColor: 'grey',
         borderColor: 'blanchedalmond',
@@ -18,6 +18,13 @@ const Scorecard = ({ player, score }) => {
     <>
       {/* <img>picture of police? random array of images? </img> */}
       <Bar data={data} />
+      <ul>
+        {Object.entries(score).map(entry => (
+          <li>
+            {entry[0]}: {entry[1]}
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
